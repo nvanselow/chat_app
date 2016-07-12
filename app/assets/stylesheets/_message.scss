@@ -1,0 +1,41 @@
+.message {
+  color: $white;
+  border: 1px black solid;
+  border-radius: 5px;
+  font-size: 16px;
+  max-width: 45%;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+.sent {
+  background-color: $red;
+  margin-left: 55%;
+  text-align: right;
+}
+
+.received {
+  background-color: $blue;
+  margin-right: 55%;
+  text-align: left;
+}
+
+.message-enter, .message-appear {
+  opacity: 0.01;
+}
+
+.message-enter.message-enter-active, .message-appear.message-appear-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.message-leave {
+  opacity: 1;
+}
+
+.message-leave.message-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
