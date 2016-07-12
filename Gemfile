@@ -6,6 +6,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'foundation-rails'
+gem 'pusher'
 
 group :development, :test do
   gem 'capybara'
@@ -14,6 +15,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'shoulda'
   gem 'valid_attribute'
+  gem 'dotenv-rails'
 end
 
 group :test do

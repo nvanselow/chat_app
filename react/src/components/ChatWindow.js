@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Messages from './Messages';
+import PusherService from '../lib/PusherService';
 
 class ChatWindow extends Component {
   constructor(props) {
@@ -17,6 +18,8 @@ class ChatWindow extends Component {
 
     this.updateCurrentMessage = this.updateCurrentMessage.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
+
+    new PusherService();
   }
 
   updateCurrentMessage(event) {
