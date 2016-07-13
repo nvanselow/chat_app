@@ -1,15 +1,17 @@
+import PUSHER_PUBLIC_KEY from './PusherPublicKey'
+
 class PusherService {
-  constructor() {
+  constructor(callback) {
     Pusher.logToConsole = true;
 
-    this.pusher = new Pusher('b0138a16ac95f1d3dc4e', {
+    this.pusher = new Pusher(PUSHER_PUBLIC_KEY, {
       encrypted: true
     });
 
-    this.channel = this.pusher.subscribe('test_channel');
+    this.channel = this.pusher.subscribe('message_channel');
 
-    this.channel.bind('my_event', function(data) {
-      alert(data.message);
+    this.channel.bind('new_message', function(data) {
+      callback(data.message);
     });
   }
 }

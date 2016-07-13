@@ -9,17 +9,16 @@ class ChatWindow extends Component {
     this.state = {
       messages: [
         {id: 1, type: 'received', body: 'Hello there!'},
-        {id: 2, type: 'sent', body: 'Greetings!'},
-        {id: 3, type: 'received', body: 'How was work?'},
-        {id: 4, type: 'sent', body: 'Went well.'}
+        {id: 2, type: 'sent', body: 'Greetings!'}
       ],
       currentMessage: ''
     }
 
     this.updateCurrentMessage = this.updateCurrentMessage.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
+    this.receiveMessage = this.receiveMessage.bind(this);
 
-    new PusherService();
+    new PusherService(this.receiveMessage);
   }
 
   updateCurrentMessage(event) {
@@ -35,6 +34,20 @@ class ChatWindow extends Component {
       body: this.state.currentMessage
     });
     this.setState({ messages: originalMessages, currentMessage: '' });
+
+    $.ajax({
+      url: '/chat',
+      method: 'POST',
+      data: {
+        message: this.state.currentMessage
+      }
+    });
+  }
+
+  receiveMessage(message) {
+    let currentMessages = this.state.messages;
+    currentMessages.push(message);
+    this.setState({ messages: currentMessages });
   }
 
   render() {
